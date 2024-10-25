@@ -1,0 +1,241 @@
+1) grep "^[^0-9][^0-9]$" lorem
+qw
+we
+rt
+yu
+io
+p[
+йц
+ук
+ен
+гш
+щз
+хъ
+--
+==
+
+2) grep -nwo '[[:alpha:]]' lorem
+2:a
+2:a
+4:о
+4:т
+4:а
+4:о
+4:й
+4:в
+4:и
+4:и
+4:б
+4:е
+4:я
+4:й
+4:й
+4:я
+4:в
+4:а
+4:е
+4:с
+4:а
+4:а
+4:В
+4:о
+4:я
+4:й
+4:й
+4:к
+4:л
+4:ю
+4:ю
+4:в
+4:и
+4:м
+4:в
+4:я
+4:я
+4:и
+4:в
+4:е
+4:о
+4:о
+4:л
+4:з
+4:х
+4:й
+4:ь
+4:в
+4:о
+4:и
+4:л
+4:в
+4:й
+4:н
+4:о
+4:и
+4:в
+4:е
+4:я
+4:и
+4:я
+4:в
+4:с
+4:и
+4:в
+4:х
+4:х
+4:и
+4:в
+4:е
+4:е
+4:я
+4:ы
+4:й
+4:и
+4:а
+4:в
+4:х
+4:х
+4:я
+8:в
+8:н
+8:ч
+9:в
+9:р
+9:ч
+10:а
+10:я
+10:а
+11:н
+11:й
+11:ч
+12:в
+12:л
+12:ч
+13:а
+13:я
+13:а
+14:а
+14:а
+14:а
+15:в
+15:м
+15:ч
+16:в
+16:а
+16:ч
+17:а
+17:я
+17:а
+35:p
+37:q
+38:w
+39:e
+40:r
+41:t
+42:y
+44:ц
+45:к
+46:н
+47:ш
+48:з
+49:ъ
+51:й
+52:ц
+53:у
+54:к
+55:е
+56:н
+57:г
+58:ш
+59:щ
+60:з
+61:х
+62:ъ
+
+3) grep '\bab[a-zA-Z]*z\b' lorem
+abcdefghijklmnopqrstuvwxyz
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+abcdefghijklmnopqrstuvwxyz
+abcdefghijklmnopqrstuvwxyz
+abcdefghijklmnopqrstuvwxyz
+
+
+4) grep -woin -E '([0-9])([0-9])\1' lorem
+6:232
+6:313
+80:121
+
+
+5) grep -wi "\([A-Za-z]*\) \1$" lorem
+sys txt TXT
+
+6) cat ~/.profile | grep -c '\.profile'
+1
+
+7) ls -l /usr/bin | grep "rws"
+-rwsr-xr-x 1 root trusted       52280 мар 12  2021 at
+-rwsr-xr-x 1 root shadow        59624 фев 23 15:10 chfn
+-rwsr-xr-x 1 root shadow        45704 фев 23 15:10 chsh
+-rwsr-xr-x 1 root trusted       55968 авг 10  2021 crontab
+-rwsr-xr-x 1 root shadow        19400 фев 23 15:10 expiry
+-rwsr-xr-x 1 root trusted       35616 сен 17  2018 fusermount
+-rwsr-xr-x 1 root trusted       31504 авг  6  2019 fusermount3
+-rwsr-xr-x 1 root shadow        71984 фев 23 15:10 gpasswd
+-rwsr-xr-x 1 root root          51456 мар 22 10:52 mount
+-rwsr-xr-x 1 root shadow        42224 фев 23 15:10 newgidmap
+-rwsr-xr-x 1 root root          37288 фев 23 15:10 newgrp
+-rwsr-xr-x 1 root shadow        42192 фев 23 15:10 newuidmap
+-rwsr-xr-x 1 root shadow        65192 фев 23 15:10 passwd
+-rwsr-xr-x 1 root root          26664 фев  8 17:14 pkexec
+-rwsr-xr-x 1 root root          71936 мар 22 10:52 su
+-rwsr-xr-x 1 root root         184728 мар  9 10:35 sudo
+-rwsr-xr-x 1 root root          35064 мар 22 10:52 umount
+
+-----------------------------
+Работа над ошибками
+2) grep -no '\<[[:alpha:]]\{1\}\>' lorem
+2:a
+2:a
+4:в
+4:и
+4:с
+4:В
+4:и
+4:и
+4:в
+4:в
+4:с
+4:в
+4:х
+4:и
+4:в
+4:в
+35:p
+37:q
+38:w
+39:e
+40:r
+41:t
+42:y
+51:й
+52:ц
+53:у
+54:к
+55:е
+56:н
+57:г
+58:ш
+59:щ
+60:з
+61:х
+62:ъ
+82:b
+
+4) grep -oin '\<\([0-9]\)[0-9]\1\>' lorem
+6:232
+6:313
+80:121
+
+5) grep -i "\(\<[A-Za-z]*\>\) \<\1\>" lorem
+abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz
+sys txt TXT
+
